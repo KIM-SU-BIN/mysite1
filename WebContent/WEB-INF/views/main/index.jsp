@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.vo.UserVo" %>
-
-<% 
-	UserVo authUser =(UserVo)session.getAttribute("authUser");
-	System.out.println(authUser);
-%>
-<%-- 위에 authUser는 no,name만 들어가 있음! --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,60 +14,13 @@
 
 <body>
 	<div id="wrap">
-
-		<div id="header" class="clearfix">
-			<h1>
-				<a href="/mysite1/user?action=main">MySite</a>
-			</h1>
-			
-			
-			
-			<% if (authUser == null) {%>
-			
-			<!-- 로그인 실패, 로그인전 -->
-			<ul>
-				<li><a href="/mysite2/user?action=loginForm" class="btn_s">로그인</a></li>
-				<li><a href="/mysite2/user?action=joinForm" class="btn_s">회원가입</a></li>
-			</ul>
-			
-			<% } else { %>
-			
-			<!-- 로그인 성공 -->
-			<!-- getName로그인 한 사람의 이름 나오게 함 -->
-			<ul>
-				<li><%=authUser.getName()%> 님 안녕하세요^^</li>
-				<li><a href="/mysite2/user?action=logout" class="btn_s">로그아웃</a></li>
-				<li><a href="/mysite2/user?action=modifyForm" class="btn_s">회원정보수정</a></li>
-			</ul>
-			
-			<%}%>
-			
-
-			<!-- 
-			<ul>
-				<li>황일영 님 안녕하세요^^</li>
-				<li><a href="" class="btn_s">로그아웃</a></li>
-				<li><a href="" class="btn_s">회원정보수정</a></li>
-			</ul>
-			-->
-			
-			<!-- 메인 화면에서 로그인/회원가입 버튼 누르면 해당 페이지로 이동하게 하기 위하여 주소 기입 -->
-			<ul>
-				<li><a href="/mysite1/user?action=loginForm" class="btn_s">로그인</a></li>
-				<li><a href="/mysite1/user?action=joinForm" class="btn_s">회원가입</a></li>
-			</ul>
-
-		</div>
+		<!-- header -->
+		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 		<!-- //header -->
 
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
-			</ul>
-		</div>
+
+		<!-- nav -->
+		<jsp:include page="/WEB-INF/views/includes/nav.jsp"></jsp:include>
 		<!-- //nav -->
 
 
@@ -112,7 +59,9 @@
 		<!-- //container -->
 
 
-		<div id="footer">Copyright ⓒ 2022 김수빈ʕ•ᴥ•ʔ. All right reserved</div>
+
+		<!-- footer -->
+		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
 		<!-- //footer -->
 
 	</div>

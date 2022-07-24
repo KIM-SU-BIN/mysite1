@@ -21,6 +21,8 @@ public class MainController extends HttpServlet {
 	//메소드 일반
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//post 방식일때 한글 깨짐 방지
+		request.setCharacterEncoding("UTF-8");
 		//코드 들어갈 곳
 		System.out.println("MainController");
 		

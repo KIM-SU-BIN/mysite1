@@ -59,7 +59,7 @@ public class UserController extends HttpServlet {
 			
 			
 			
-		} else if ("loginForm".equals(action)) { // 로그인폼
+		} else if ("loginForm".equals(action)) {	 // 로그인폼
 			System.out.println("UserController>loginForm");
 
 			// 포워드 => 내부 주소 잘 기입하기
@@ -68,7 +68,7 @@ public class UserController extends HttpServlet {
 			
 			
 			
-		} else if ("login".equals(action)) { // 로그인
+		} else if ("login".equals(action)) { 	// 로그인
 			System.out.println("UserController>login");
 
 			// 파라미터 꺼내기
@@ -92,9 +92,9 @@ public class UserController extends HttpServlet {
 			} else {
 				System.out.println("로그인 성공");
 				
-			//password 자리는 꺼낼 때 쓰는 키값인데 이게 뭔가..?	
-			HttpSession	session = request.getSession();
-			session.setAttribute("authUser", authUser);
+			//password 자리는 꺼낼 때 쓰는 키
+			HttpSession	session = request.getSession();		//session을 새로 만듦
+			session.setAttribute("authUser", authUser);		//위에 있는 authUser를  session 안에 저장한다.
 
 			
 			//메인 리다이렉트 ==> 로그인 성공하면 다시 메인페이지로 돌아가게 함
@@ -102,6 +102,39 @@ public class UserController extends HttpServlet {
 			
 			}
 			
+			
+			
+		}else if ("logout".equals(action)) {	//로그아웃
+			System.out.println("UserController>logout");
+			
+			//세션값을 지운다
+			HttpSession session = request.getSession();
+			session.removeAttribute("authUser");
+			session.invalidate();
+			
+			//메인으로 리다이렉트
+			WebUtil.redirect(request, response, "/mysite1/main");
+			
+			
+			
+		} else if("modifyForm".equals(action)) {	//회원정보 수정폼
+			System.out.println("UserController>modifyForm");
+			
+			//로그인시 사용자의 no 값을 세션에서 가져오기
+			HttpSession session = request.getSession();
+			UserVo authUser = (UserVo)session.getAttribute("authUser");
+			//int no = authUser.getNo();
+			
+			
+			//no로 사용자 정보 가져오기
+			UserDao userDao = new UserDao();
+			UserVo userVo = userDao.getUser(authUser.getNo());	//no, id, name, password, gender 
+			System.out.println("userVo");
+			
+			//request의 attribute에 userVo 넣어서 포워딩
+			request.setAttribute("userVo", userVo);
+			WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm");
+
 		}
 
 	}

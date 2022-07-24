@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite2/assets/css/mysite.css" rel="stylesheet"
+<link href="/mysite1/assets/css/mysite.css" rel="stylesheet"
 	type="text/css">
-<link href="/mysite2/assets/css/user.css" rel="stylesheet"
+<link href="/mysite1/assets/css/user.css" rel="stylesheet"
 	type="text/css">
 
 </head>
@@ -104,7 +106,9 @@
 		</div>
 		<!-- //container  -->
 
-		<div id="footer">Copyright ⓒ 2022 김수빈. All right reserved</div>
+
+		<!-- footer -->
+		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
 		<!-- //footer -->
 
 	</div>
