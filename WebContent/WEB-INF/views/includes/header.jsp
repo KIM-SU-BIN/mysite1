@@ -1,12 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%
-p
+<% p
 //헤더로그인
-UsersVo authUser = (UsersVo) session.getAttribute("userVo");
-%>
+UserVo authUser = (UsersVo) session.getAttribute("userVo"); %>
 
 <body>
 <html>

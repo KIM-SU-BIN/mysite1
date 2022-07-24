@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%-- UserVo authUser = (UserVo)session.getAttribute("authUser"); --%>
-<%p UsersVo userVo = (UsersVo) request.getAttribute("userVo")%>
+<%p UserVo userVo = (UsersVo) request.getAttribute("userVo")%>
 
 <!DOCTYPE html>
 <html>
